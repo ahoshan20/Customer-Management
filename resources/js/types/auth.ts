@@ -18,3 +18,14 @@ export type TwoFactorConfigContent = {
     description: string;
     buttonText: string;
 };
+
+export type Address = {
+    id: number;
+    label: string;
+    line_1: string;
+    line_2: string;
+    city: string;
+    state: string;
+    postal_code: string;
+    country: string;
+};
