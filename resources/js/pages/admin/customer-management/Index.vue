@@ -5,6 +5,8 @@ import { computed } from 'vue';
 import { Button } from '@/components/ui/button';
 import DataTable from '@/components/ui/data-table/DataTable.vue';
 import { create, destroy, edit, index, show } from '@/routes/admin/customer';
+import { h } from 'vue';
+
 
 interface Customer {
     id: number;
@@ -108,7 +110,21 @@ defineOptions({
             :columns="[
                 { key: 'name', label: 'Name', sortable: true },
                 { key: 'email', label: 'Email', sortable: true },
-                { key: 'status', label: 'Status', sortable: true },
+                {
+                    key: 'status',
+                    label: 'Status',
+                    sortable: true,
+                    render: (item: Customer) =>
+                        h(
+                            'span',
+                            {
+                                class: item.status === 'active'
+                                    ? 'text-emerald-600 font-semibold'
+                                    : 'text-red-600 font-semibold',
+                            },
+                            item.status.charAt(0).toUpperCase() + item.status.slice(1),
+                        ),
+                }
             ]"
             :filters="[
                 {

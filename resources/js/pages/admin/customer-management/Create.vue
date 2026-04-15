@@ -36,7 +36,7 @@ defineOptions({
 <template>
     <Head title="Create Customer" />
 
-    <div class="mx-auto max-w-2xl space-y-6 p-4">
+    <div class="mx-auto max-w-5xl min-w-xl space-y-6 p-4">
         <div class="flex items-center justify-between">
             <h1 class="text-2xl font-bold">Create Customer</h1>
             <Button as-child variant="outline">

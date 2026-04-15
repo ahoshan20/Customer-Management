@@ -145,6 +145,17 @@ const resolveActionIcon = (action: Action<any>, item: any) => {
   return action.icon;
 };
 
+const RenderCell = {
+  props: {
+    render: Function,
+    item: Object,
+    index: Number,
+  },
+  setup(props: any) {
+    return () => props.render(props.item, props.index);
+  },
+};
+
 // Pagination Logic
 const visiblePages = computed(() => {
   const pages = [];
@@ -271,7 +282,7 @@ const visiblePages = computed(() => {
             </td>
             
             <td v-for="column in columns" :key="column.key" :class="['datatable-cell', column.className || '']">
-              <component v-if="column.render" :is="column.render(item, index)" />
+              <RenderCell v-if="column.render" :render="column.render" :item="item" :index="index" />
               <template v-else>{{ item[column.key] }}</template>
             </td>
 
